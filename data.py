@@ -1,12 +1,27 @@
 import torch
 import tiktoken
 from model_config import batch_size, block_size, device
+import os
 
-with open('./words.txt', 'r', encoding='utf-8') as f:
-    text = f.read()
+texts = []
+dataset_path = "/datasets/gutenberg/"
+
+for root, dirs, files in os.walk(dataset_path):
+    for file in files:
+        if file.endswith(".txt"):
+            try:
+                with open(os.path.join(root, file), 'r', encoding='utf-8') as f:
+                    texts.append(f.read())
+            except:
+                pass
+
+text = "\n".join(texts)
 
 enc = tiktoken.get_encoding("gpt2")
-tokens = enc.encode(text)[:200_000_000]
+tokens = enc.encode(text)
+
+tokens = tokens[:200_000_000]
+
 data = torch.tensor(tokens, dtype=torch.long)
 
 n = int(0.9 * len(data))
