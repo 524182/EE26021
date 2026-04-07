@@ -132,6 +132,48 @@
       gap: 18px;
     }
 
+    .model-details {
+      margin-top: 26px;
+      padding: 16px 18px;
+      text-align: center;
+    }
+
+    .model-details h3 {
+      font-size: 1rem;
+      color: var(--card-heading);
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      font-weight: 800;
+    }
+
+    .model-details table {
+      width: min(560px, 100%);
+      margin: 0 auto;
+      border-collapse: collapse;
+      color: var(--stats-text);
+      font-size: 0.92rem;
+      line-height: 1.55;
+      text-align: left;
+    }
+
+    .model-details th,
+    .model-details td {
+      border-bottom: 1px solid var(--border);
+      padding: 8px 10px;
+    }
+
+    .model-details th {
+      width: 62%;
+      color: var(--card-heading);
+      font-weight: 700;
+    }
+
+    .model-details tr:last-child th,
+    .model-details tr:last-child td {
+      border-bottom: 0;
+    }
+
     .model-card {
       text-decoration: none;
       color: inherit;
@@ -257,7 +299,7 @@
         <div class="stats">
           <span><span class="stat-label">Dataset:</span> Tiny-stories (Fiction passages and screenplay-style samples)</span>
           <span><span class="stat-label">Fine-tuned:</span> No</span>
-          <span><span class="stat-label">Tokens in training dataset:</span> 400,000</span>
+          <span><span class="stat-label">Tokens in training dataset:</span> 400 million</span>
           <span><span class="stat-label">Present epoch loss:</span> train: 1.4308 | validation: 1.4368</span>
           <span><span class="stat-label">Perplexity (shortlisted next words):</span> e^1.43 (shortlists 4 out of 50,257 tokens)</span>
         </div>
@@ -269,7 +311,7 @@
         <div class="stats">
           <span><span class="stat-label">Dataset:</span> Fineweb-Edu (Curated educational websites and technical guides)</span>
           <span><span class="stat-label">Fine-tuned:</span> No</span>
-          <span><span class="stat-label">Tokens in training dataset:</span> 400,000</span>
+          <span><span class="stat-label">Tokens in training dataset:</span> 400 million</span>
           <span><span class="stat-label">Present epoch loss:</span> train: 3.6942 | validation: 3.7563</span>
           <span><span class="stat-label">Perplexity (shortlisted next words):</span> e^3.75 (shortlists 42 out of 50,257 tokens)</span>
         </div>
@@ -282,15 +324,45 @@
         <div class="stats">
           <span><span class="stat-label">Dataset:</span> Synthetically made. U.S. affairs (presidential, wars etc.)</span>
           <span><span class="stat-label">Fine-tuned:</span> Yes (LoRA)</span>
-          <span><span class="stat-label">Fine-tuned Tokens in training dataset:</span> 39.7M</span>
+          <span><span class="stat-label">Fine-tuned Tokens in training dataset:</span> 39,490</span>
           <span><span class="stat-label">Present epoch loss:</span> train: 3.0140 | validation: 3.8601</span>
           <span><span class="stat-label">Perplexity (shortlisted next words):</span> e^3.86 (shortlists 47 out of 50,257 tokens)</span>
         </div>
       </a>
     </section>
+
+    <section class="model-details" aria-label="Model details">
+      <h3>Model Architecture Details</h3>
+      <table>
+        <tbody>
+          <tr>
+            <th scope="row">Number of embeddings</th>
+            <td>512</td>
+          </tr>
+          <tr>
+            <th scope="row">Number of tokens</th>
+            <td>50257</td>
+          </tr>
+          <tr>
+            <th scope="row">Attention heads</th>
+            <td>8</td>
+          </tr>
+          <tr>
+            <th scope="row">Transformer block layers</th>
+            <td>8</td>
+          </tr>
+          <tr>
+            <th scope="row">Max token length</th>
+            <td>256</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
   </main>
 
   <script>
+    document.body.style.zoom = "105%";
+
     const themeToggleBtn = document.getElementById("themeToggleBtn");
     const savedTheme = localStorage.getItem("femto-theme");
 
